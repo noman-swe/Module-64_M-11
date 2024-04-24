@@ -4,6 +4,8 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors());
+// request console log is undefined tai ei use(express.json) middlewire ta use korsi.
+app.use(express.json());
 
 app.get('/', (req, res) => {
     res.send('Hello Node js')
@@ -27,6 +29,12 @@ app.get('/user/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const user = users.find(u => u.id === id);
     res.send(user);
+})
+
+// post
+app.post('/user', (req, res) => {
+    console.log("request", req.body);
+    res.send('Success');
 })
 
 app.listen(port, () => {
