@@ -21,7 +21,15 @@ const users = [
 ]
 
 app.get('/users', (req, res) => {
-    res.send(users)
+    if (req.query.name) {
+        const search = req.query.name.toLowerCase();
+        const matched = users.filter(user => user.name.toLowerCase().includes(search))
+
+        res.send(matched);
+    }
+    else {
+        res.send(users)
+    }
 })
 
 app.get('/user/:id', (req, res) => {
@@ -34,7 +42,11 @@ app.get('/user/:id', (req, res) => {
 // post
 app.post('/user', (req, res) => {
     console.log("request", req.body);
-    res.send('Success');
+    const user = req.body;
+    user.id = users.length + 1;
+    users.push(user);
+    res.send(user);
+
 })
 
 app.listen(port, () => {
