@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+to create a expressjs project OR to install a express js project
+-------------------------------------------------------------------
+* mkdir expressjs-project-name
+* cd expressjs-project-name
+* code .
+*create a index.js file
+* npm init -y [to Initialize a project in node with npm init and this will give a package.json file in the project]
+* npm install express
+______________________________
+    // code to use express
+------------------------------
+ const express = require('express')
+const app = express();
+const port = 4000;
+
+app.get('/', (req, res) => {
+    res.send('Hello Express')
+})
+
+app.listen(port, ()=> {
+    console.log("Listening to port no: " , port);
+})
+----------------------------------------------------------------
+        To Run Express js auto we need nodemon to install it--
+----------------------------------------------------------------
+* npm install -g nodemon
+* erpor package.json er scripts obj e add korbo or likhbo--
+    scripts : {
+        'start' : 'node index.js',
+        'start-dev' : 'nodemon index.js',
+    }
+* and ekhn theke cmd chalate hobe : nodemon index.js
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+*
+*
+*
+*
+*
+*
+*
+*
+*
